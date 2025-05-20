@@ -2,4 +2,4 @@ from .user import UserViewSet
 from .categoria import CategoriaViewSet
 from .editora import EditoraViewSet
 from .autor import AutorViewSet
-from .livro import LivroViewSet, LivroSerializer
+from .livro import  LivroViewSet
