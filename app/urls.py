@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
 from drf_spectacular.views import (
@@ -9,6 +10,9 @@ from rest_framework.routers import DefaultRouter
 
 from core.views import UserViewSet, CategoriaViewSet, EditoraViewSet, AutorViewSet, LivroViewSet
 
+from uploader.router import router as uploader_router
+
+from django.conf.urls.static import static
 
 
 router = DefaultRouter()
@@ -33,6 +37,9 @@ urlpatterns = [
         SpectacularRedocView.as_view(url_name='schema'),
         name='redoc',
     ),
+    path("api/media/", include(uploader_router.urls)),
     # API
     path('api/', include(router.urls)),
 ]
+
+urlpatterns += static(settings.MEDIA_ENDPOINT, document_root=settings.MEDIA_ROOT)
