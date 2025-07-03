@@ -12,7 +12,7 @@ from .models import Categoria
 @admin.register(User)
 class UserAdmin(BaseUserAdmin):
     """Define the admin pages for users."""
-
+    (_('Personal Info'), {'fields': ('name', 'passage_id', 'foto')}),
     ordering = ['id']
     list_display = ['email', 'name']
     fieldsets = (
